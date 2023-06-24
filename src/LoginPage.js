@@ -1,24 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import StartPages from './StartPages';
-import LoginPage from './LoginPage'; // import the LoginPage component
-// ... other imports
+import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 
-function App() {
-  // ... other code
+function LoginPage() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <StartPages />
-        </Route>
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-        {/* Add more Routes for other pages */}
-      </Switch>
-    </Router>
+    <Box padding="6" maxW="400px" margin="auto">
+      <form>
+        <FormControl id="email" isRequired>
+          <FormLabel>Email address</FormLabel>
+          <Input type="email" />
+        </FormControl>
+
+        <FormControl id="password" isRequired mt={4}>
+          <FormLabel>Password</FormLabel>
+          <Input type="password" />
+        </FormControl>
+
+        <Button mt={4} width="100%" type="submit">
+          Log in
+        </Button>
+      </form>
+    </Box>
   );
 }
 
-export default App;
+export default LoginPage;

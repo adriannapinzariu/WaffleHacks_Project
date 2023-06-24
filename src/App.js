@@ -5,6 +5,8 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
 import { Html } from '@react-three/drei';
 
+
+
 const MotionBox = motion(Box);
 const MotionButton = motion(Button);
 
@@ -87,10 +89,11 @@ function App() {
         transition={{ duration: 0.5 }}
       >
         <Canvas style={{ position: "absolute", zIndex: 1 }}>
-          <ambientLight />
-          <pointLight position={[10, 10, 10]} />
-          {[...Array(200)].map((_, i) => <Cube key={i} />)}
-        </Canvas>
+  <ambientLight />
+  <pointLight position={[10, 10, 10]} />
+  {[...Array(200)].map((_, i) => <Cube key={i} />)}
+</Canvas>
+
 
         <Box 
           zIndex={2} 
@@ -118,7 +121,7 @@ function App() {
             >
               Dive into the exciting world of sign language. Ready to get started?
             </Text>
-            <Link href="/get-started" isExternal>
+            <Link to="/login">
               <MotionButton
                 whileHover="hover"
                 whileTap="tap"
@@ -138,5 +141,6 @@ function App() {
     </Box>
   );
 }
+
 
 export default App;
