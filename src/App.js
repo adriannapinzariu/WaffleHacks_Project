@@ -4,6 +4,7 @@ import { Box, VStack, Heading, Text, Link, Button, useColorModeValue } from '@ch
 import { motion } from 'framer-motion';
 
 const MotionBox = motion(Box);
+const MotionButton = motion(Button);
 
 function Cube() {
   const mesh = useRef();
@@ -23,6 +24,11 @@ function Cube() {
     </mesh>
   );
 }
+
+const buttonVariants = {
+  hover: { scale: 1.1 },
+  tap: { scale: 0.9 },
+};
 
 function App() {
   const bgGradient = useColorModeValue("linear(to-br, #ADD8E6, #E6E6FA)", "linear(to-br, #4b5178, #3a4062)");
@@ -51,14 +57,36 @@ function App() {
         rounded="xl" 
         shadow="2xl"
         backdropFilter="blur(10px)"
-        borderWidth={1}
+        borderWidth={2}
         borderColor={useColorModeValue("#4b5178", "white")}
       >
-        <VStack spacing={8} textAlign="center" maxW={'lg'}>
-          <Heading fontSize="6xl" color={useColorModeValue("#4b5178", "white")}>Start Your ASL Journey</Heading>
-          <Text fontSize="2xl" color={useColorModeValue("#4b5178", "white")}>Dive into the exciting world of sign language. Ready to get started?</Text>
+        <VStack spacing={2} textAlign="center" maxW={'lg'}>
+          <Heading 
+            fontSize="6xl" 
+            fontWeight="bold" 
+            lineHeight="tight" 
+            letterSpacing={"-.1rem"} 
+            color={useColorModeValue("#4b5178", "white")}
+          >
+            Start Your ASL Journey
+          </Heading>
+          <Text 
+            fontSize="2xl" 
+            color={useColorModeValue("#4b5178", "white")}
+          >
+            Dive into the exciting world of sign language. Ready to get started?
+          </Text>
           <Link href="/get-started" isExternal>
-            <Button colorScheme="purple" size="lg" color="white">Let's Go!</Button>
+            <MotionButton
+              whileHover="hover"
+              whileTap="tap"
+              variants={buttonVariants}
+              colorScheme="purple"
+              size="lg"
+              color="white"
+            >
+              Let's Go!
+            </MotionButton>
           </Link>
         </VStack>
       </Box>
@@ -67,3 +95,4 @@ function App() {
 }
 
 export default App;
+
