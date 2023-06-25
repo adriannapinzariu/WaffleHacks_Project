@@ -5,6 +5,7 @@ import { Html, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 
 import { MeshBasicMaterial } from 'three';
@@ -100,19 +101,21 @@ function LoginPage() {
                 <Input type="password" />
               </FormControl>
   
-              <MotionButton
-                whileHover="hover"
-                whileTap="tap"
-                variants={buttonVariants}
-                colorScheme="purple"
-                size="lg"
-                color="white"
-                mt={4}
-                width="100%"
-                type="submit"
-              >
-                Log in
-              </MotionButton>
+              <Link to="/lesson"> 
+          <MotionButton
+            whileHover="hover"
+            whileTap="tap"
+            variants={buttonVariants}
+            colorScheme="purple"
+            size="lg"
+            color="white"
+            mt={4}
+            width="100%"
+            type="submit"
+          >
+            Log in
+          </MotionButton>
+        </Link>
             </VStack>
           </Box>
         </MotionBox>
