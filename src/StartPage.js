@@ -10,75 +10,9 @@ import { Cylinder } from '@react-three/drei';
 import { MeshBasicMaterial } from 'three';
 
 
-
 const MotionBox = motion(Box);
 const MotionButton = motion(Button);
 
-
-/*function Cube() {
-  const mesh = useRef();
-  const colors = ['#ADD8E6', '#9DB2E1', '#8D8CDC', '#7D66D7', '#6D40D2', '#5C1ACD', '#4B00C9', ];
-  const color = colors[Math.floor(Math.random() * colors.length)];
-
-  useFrame(() => {
-    mesh.current.position.y -= 0.1;
-    if (mesh.current.position.y < -50) mesh.current.position.y = 100;
-
-    // Animation Logic independent of mouse position
-    mesh.current.rotation.x += 0.01;
-    mesh.current.rotation.y += 0.01;
-  });
-
-  return (
-    <mesh position={[Math.random() * 100 - 50, Math.random() * 100, Math.random() * 100 - 50]} ref={mesh}>
-      <boxBufferGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={color} />
-    </mesh>
-  );
-} */
-
-/*
-function PuzzlePiece() {
-    const mesh = useRef();
-    const colors = ['#ADD8E6', '#9DB2E1', '#8D8CDC', '#7D66D7', '#6D40D2', '#5C1ACD', '#4B00C9', ];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-  
-    useFrame(() => {
-      mesh.current.position.y -= 0.1;
-      if (mesh.current.position.y < -50) mesh.current.position.y = 100;
-  
-      mesh.current.rotation.x += 0.01;
-      mesh.current.rotation.y += 0.01;
-    });
-  
-    return (
-      <group position={[Math.random() * 100 - 50, Math.random() * 100, Math.random() * 100 - 50]} ref={mesh}>*/
-        {/* Main Body */}
-        /*<mesh>
-          <boxBufferGeometry args={[1, 1, 1]} />
-          <meshStandardMaterial color={color} />
-        </mesh>
-        
-        {/* Puzzle Piece Protrusion 1 }/*
-        <mesh 
-            position={[0.5, 0, 0]} 
-            scale={[0.5, 0.5, 0.5]}
-        >
-          <sphereBufferGeometry args={[0.5, 32, 32]} />
-          <meshStandardMaterial color={color} />
-        </mesh>*/
-  
-        {/* Puzzle Piece Protrusion 2 */}
-       /* <mesh 
-            position={[0, 0, 0.5]} 
-            scale={[0.5, 0.5, 0.5]}
-        >
-          <sphereBufferGeometry args={[0.5, 32, 32]} />
-          <meshStandardMaterial color={color} />
-        </mesh>
-      </group>
-    );
-}*/
 
 function Model() {
     const ref = useRef();
