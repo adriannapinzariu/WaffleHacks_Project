@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Box, Flex, Heading, Text, Grid, Circle, useColorModeValue } from '@chakra-ui/react';
+import { Button, Box, Flex, Heading, Text, Grid, Circle, useColorModeValue, Progress, Spacer } from '@chakra-ui/react';
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { Canvas, useFrame } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
@@ -105,65 +105,28 @@ function LessonPage() {
             gap={6}
             p={10}
           >
-            <MotionCircle 
-              as={Button} 
-              size="120px" 
-              bgGradient={bgGradient} 
-              color="white" 
-              boxShadow="2xl" 
-              p={2} 
-              gridRow="1" 
-              gridColumn="2"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              Lesson 1
-            </MotionCircle>
-            <MotionCircle 
-              as={Button} 
-              size="120px" 
-              bgGradient={bgGradient} 
-              color="white" 
-              boxShadow="2xl" 
-              p={2} 
-              gridRow="2" 
-              gridColumn="1"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              Lesson 2
-            </MotionCircle>
-            <MotionCircle 
-              as={Button} 
-              size="120px" 
-              bgGradient={bgGradient} 
-              color="white" 
-              boxShadow="2xl" 
-              p={2} 
-              gridRow="3" 
-              gridColumn="1"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              Lesson 3
-            </MotionCircle>
-            <MotionCircle 
-              as={Button} 
-              size="120px" 
-              bgGradient={bgGradient} 
-              color="white" 
-              boxShadow="2xl" 
-              p={2} 
-              gridRow="4" 
-              gridColumn="2"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              Lesson 4
-            </MotionCircle>
-            
-            {/* Add more lessons as you wish */}
+            <MotionCircle as={Button} size="120px" bgGradient={bgGradient} color="white" boxShadow="2xl" p={2} gridRow="1" gridColumn="2">Lesson 1</MotionCircle>
+            <MotionCircle as={Button} size="120px" bgGradient={bgGradient} color="white" boxShadow="2xl" p={2} gridRow="2" gridColumn="1">Lesson 2</MotionCircle>
+            <MotionCircle as={Button} size="120px" bgGradient={bgGradient} color="white" boxShadow="2xl" p={2} gridRow="3" gridColumn="1">Lesson 3</MotionCircle>
+            <MotionCircle as={Button} size="120px" bgGradient={bgGradient} color="white" boxShadow="2xl" p={2} gridRow="4" gridColumn="2">Lesson 4</MotionCircle>
           </Grid>
+
+          <Flex direction="column" w={{ base: "90%", md: "30%" }} position="fixed" right="10" top="50">
+            <Box p={5} bg="#1a202c" color="white" boxShadow="md" rounded="lg" m={5} borderWidth={2} borderColor={useColorModeValue("#4b5178", "white")}>
+              <Heading align="center" as="h3" mb={3}>Daily Quests</Heading>
+              <Text align="center" fontSize="md"> Earn XP by completing daily tasks!</Text>
+              <Spacer height="10px"/>
+              <Text mb={5} align="center" fontSize="md">Current XP: 30</Text>
+              <Progress colorScheme="purple" value={30} />
+            </Box>
+            <Box p={5} bg="#1a202c" color="white" boxShadow="md" rounded="lg" m={5} borderWidth={2} borderColor={useColorModeValue("#4b5178", "white")}>
+              <Heading align="center" as="h3" mb={2}>Create a profile</Heading>
+              <Text mb={5} align="center" fontSize="md">Save your progress and track your improvement.</Text>
+              <Flex justify="center">
+                <Button colorScheme="purple" variant="solid" onClick={() => alert('Redirecting to login...')}>Go to Login</Button>
+              </Flex>
+            </Box>
+          </Flex>
         </Flex>
       </MotionBox>
     </ChakraProvider>
