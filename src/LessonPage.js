@@ -5,6 +5,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { MeshBasicMaterial } from 'three';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 import DrawerExample from "./sidebar";
 
@@ -101,14 +102,22 @@ function LessonPage() {
 
           <Grid
             templateRows={{ sm: "repeat(7, 1fr)" }}
-            templateColumns={{ sm: "repeat(3, 1fr)" }}
             gap={6}
             p={10}
           >
+            <Link to="/Lesson1">
             <MotionCircle as={Button} size="120px" bgGradient={bgGradient} color="white" boxShadow="2xl" p={2} gridRow="1" gridColumn="2">Lesson 1</MotionCircle>
-            <MotionCircle as={Button} size="120px" bgGradient={bgGradient} color="white" boxShadow="2xl" p={2} gridRow="2" gridColumn="1">Lesson 2</MotionCircle>
-            <MotionCircle as={Button} size="120px" bgGradient={bgGradient} color="white" boxShadow="2xl" p={2} gridRow="3" gridColumn="1">Lesson 3</MotionCircle>
+            </Link>
+            <Link to="/Lesson2">
+            <MotionCircle as={Button} size="120px" bgGradient={bgGradient} color="white" boxShadow="2xl" p={2} gridRow="2" gridColumn="2">Lesson 2</MotionCircle>
+            </Link>
+            <Link to="/Lesson3">
+            <MotionCircle as={Button} size="120px" bgGradient={bgGradient} color="white" boxShadow="2xl" p={2} gridRow="3" gridColumn="2">Lesson 3</MotionCircle>
+            </Link>
+            <Link to="/Lesson4">
             <MotionCircle as={Button} size="120px" bgGradient={bgGradient} color="white" boxShadow="2xl" p={2} gridRow="4" gridColumn="2">Lesson 4</MotionCircle>
+            </Link>
+            
           </Grid>
 
           <Flex direction="column" w={{ base: "90%", md: "30%" }} position="fixed" right="10" top="50">
