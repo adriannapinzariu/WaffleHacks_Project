@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Html } from '@react-three/drei';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Cylinder } from '@react-three/drei';
+import { MeshBasicMaterial } from 'three';
 
 
 
@@ -36,6 +37,7 @@ const MotionButton = motion(Button);
   );
 } */
 
+/*
 function PuzzlePiece() {
     const mesh = useRef();
     const colors = ['#ADD8E6', '#9DB2E1', '#8D8CDC', '#7D66D7', '#6D40D2', '#5C1ACD', '#4B00C9', ];
@@ -50,24 +52,24 @@ function PuzzlePiece() {
     });
   
     return (
-      <group position={[Math.random() * 100 - 50, Math.random() * 100, Math.random() * 100 - 50]} ref={mesh}>
+      <group position={[Math.random() * 100 - 50, Math.random() * 100, Math.random() * 100 - 50]} ref={mesh}>*/
         {/* Main Body */}
-        <mesh>
+        /*<mesh>
           <boxBufferGeometry args={[1, 1, 1]} />
           <meshStandardMaterial color={color} />
         </mesh>
         
-        {/* Puzzle Piece Protrusion 1 */}
+        {/* Puzzle Piece Protrusion 1 }/*
         <mesh 
             position={[0.5, 0, 0]} 
             scale={[0.5, 0.5, 0.5]}
         >
           <sphereBufferGeometry args={[0.5, 32, 32]} />
           <meshStandardMaterial color={color} />
-        </mesh>
+        </mesh>*/
   
         {/* Puzzle Piece Protrusion 2 */}
-        <mesh 
+       /* <mesh 
             position={[0, 0, 0.5]} 
             scale={[0.5, 0.5, 0.5]}
         >
@@ -76,9 +78,38 @@ function PuzzlePiece() {
         </mesh>
       </group>
     );
-}
+}*/
 
-
+function Model() {
+    const ref = useRef();
+    const colors = ['#ADD8E6', '#9DB2E1', '#8D8CDC', '#7D66D7', '#6D40D2', '#5C1ACD', '#4B00C9', ];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const [model, setModel] = useState();
+  
+    useEffect(() => {
+      new GLTFLoader().load('/3D/puzzlePiece1.glb', (gltf) => {
+        gltf.scene.traverse((child) => {
+          if (child.isMesh) {
+            child.material = new MeshBasicMaterial({ wireframe: true, color });
+          }
+        });
+        setModel(gltf);
+      });
+    }, [])
+  
+    useFrame(() => {
+      if (ref.current) {
+        ref.current.position.y -= 0.1;
+        if (ref.current.position.y < -50) ref.current.position.y = 100;
+    
+        ref.current.rotation.x += 0.01;
+        ref.current.rotation.y += 0.01;
+      }
+    });
+  
+    return model ? <primitive object={model.scene} position={[Math.random() * 100 - 50, Math.random() * 100, Math.random() * 100 - 50]} ref={ref} /> : null;
+  }
+  
 const buttonVariants = {
   hover: { scale: 1.1 },
   tap: { scale: 0.9 },
@@ -87,18 +118,12 @@ const buttonVariants = {
 // Navbar
 function Navbar() {
     return (
-        <Flex p="2" bg="transparent" color="white" boxShadow="md" position="sticky" top={0} zIndex={3}>
+      <Flex p="2" bg="transparent" color="white" boxShadow="md" position="sticky" top={0} zIndex={3}>
         <Heading size="md" ml="2">ASL Journey</Heading>
         <Spacer />
         <Menu>
-          <MenuButton 
-            bg="#2D3748"
-            as={Button} 
-            borderWidth={2}
-            borderColor={useColorModeValue("#4b5178", "#9f7aea")} 
-            rightIcon={<ChevronDownIcon />} 
-            color="black"
-          >
+          <MenuButton bg="#2D3748"as={Button} borderWidth={2}
+            borderColor={useColorModeValue("#4b5178", "white")} rightIcon={<ChevronDownIcon />} color="black">
             <Avatar size="sm" />
           </MenuButton>
           <MenuList bg="#000000"  >
@@ -142,10 +167,10 @@ function StartPage() {
           transition={{ duration: 0.5 }}
         >
           <Canvas style={{ position: "absolute", zIndex: 1, background: "#000000" }}>
-            <ambientLight />
-            <pointLight position={[10, 10, 10]} />
-            {[...Array(200)].map((_, i) => <PuzzlePiece key={i} />)}
-          </Canvas>
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
+          {[...Array(200)].map((_, i) => <Model key={i} />)}
+        </Canvas>
   
           <Box 
             zIndex={2} 
