@@ -4,6 +4,10 @@ import { Global, css } from "@emotion/react";
 import StartPage from './StartPage';
 import LoginPage from './LoginPage';
 import LessonPage from './LessonPage';
+import LessonOne from './Lesson1';
+import LessonTwo from './Lesson2';
+import LessonThree from './Lesson3';
+import LessonFour from './Lesson4';
 
 function App() {
   return (
@@ -24,6 +28,10 @@ function App() {
         <Route path="/" element={<StartPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/lesson" element={<LessonPage />} />
+        <Route path="/lesson1" element={<LessonOne />}></Route>
+        <Route path="/lesson2" element={<LessonTwo />}></Route>
+        <Route path="/lesson3" element={<LessonThree />}></Route>
+        <Route path="/lesson4" element={<LessonFour />}></Route>
       </Routes>
     </Router>
   );
