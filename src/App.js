@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Global, css } from "@emotion/react";
 import StartPage from './StartPage';
 import LoginPage from './LoginPage';
+import LessonPage from './LessonPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<StartPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/lesson" element={<LessonPage />} />
       </Routes>
     </Router>
   );
