@@ -1,30 +1,33 @@
 import React from "react";
 import {
+  Box,
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
-  DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
   Button,
-  Input,
-  useDisclosure,
-  Link,
-  Heading,
-  Center,
   Image,
-  Stack,
+  VStack,
   Text,
-  Container,
   Grid,
   GridItem,
-  Flex
+  Center,
+  Heading,
+  useDisclosure,
 } from "@chakra-ui/react";
+import { ChevronRightIcon } from '@chakra-ui/icons';
 
 function DrawerExample({ children, ...rest }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+
+  const navigationItems = [
+    { name: 'Home', src: 'https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/house-icon.png' },
+    { name: 'Shop', src: 'https://www.iconpacks.net/icons/2/free-store-icon-2017-thumb.png' },
+    { name: 'Profile', src: 'https://cdn.onlinewebfonts.com/svg/img_569204.png' },
+    { name: 'Settings', src: 'https://www.iconfinder.com/data/icons/feather-2/24/settings-512.png' },
+    { name: 'Support', src: 'https://www.iconfinder.com/data/icons/feather-2/24/life-buoy-512.png' },
+  ];
 
   return (
     <>
@@ -40,73 +43,38 @@ function DrawerExample({ children, ...rest }) {
         closeOnOverlayClick={false}
         blockScrollOnMount={false}
       >
-        {/* <DrawerOverlay /> */}
-    <DrawerContent>
-    <Stack spacing={10}>
-    <DrawerHeader>
+        <DrawerContent bg="#1a202c" color="white">
+          <DrawerHeader borderBottomWidth="1px" borderColor="#4b5178">
             <Center>
-                <Heading color='purple'>ASLingo</Heading>
+              <Heading color='white'>ASLingo</Heading>
             </Center>
           </DrawerHeader>
           <DrawerBody>
-            <Stack spacing={1}>
-                <Grid 
-                templateColumns='repeat(2, 75px)' 
-                gap={4}>
-                    <GridItem w='100px' h='1'>
-                        <Image 
-                            src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/house-icon.png"
-                            boxSize="50px"
-                        ></Image>
+            <VStack spacing={6} align="stretch">
+              {navigationItems.map((item, index) => (
+                <Box key={index} rounded={'md'}>
+                  <Grid templateColumns='repeat(3, 1fr)' gap={4}
+                        align="center" p={2} _hover={{ bg: '#4A5568' }}>
+                    <GridItem>
+                      <Image 
+                        src={item.src}
+                        boxSize="40px"
+                      />
                     </GridItem>
-                    <GridItem w='100%' h='100px'>
-                        <Text
-                        fontSize="xl"
-                        >
-                            Home
+                    <GridItem colSpan={2}>
+                      <Box p={2} display={{ md: 'flex' }}>
+                        <Text fontSize="xl" color="white" fontWeight="bold" ml={2}>
+                          {item.name}
                         </Text>
-                        
+                        <Box flexGrow={1} />
+                        <ChevronRightIcon color="white" />
+                      </Box>
                     </GridItem>
-                </Grid>
-                <Grid 
-                templateColumns='repeat(2, 75px)' 
-                gap={4}>
-                    <GridItem w='100px' h='1'>
-                        <Image 
-                            src="https://www.iconpacks.net/icons/2/free-store-icon-2017-thumb.png"
-                            boxSize="50px"
-                        ></Image>
-                    </GridItem>
-                    <GridItem w='100%' h='100px'>
-                        <Text
-                        fontSize="xl"
-                        >
-                            Shop
-                        </Text>
-                    </GridItem>
-                </Grid>
-                <Grid 
-                templateColumns='repeat(2, 75px)' 
-                gap={4}>
-                    <GridItem w='100px' h='1'>
-                        <Image 
-                            src="https://cdn.onlinewebfonts.com/svg/img_569204.png"
-                            boxSize="50px"
-                        ></Image>
-                    </GridItem>
-                    <GridItem w='100%' h='100px'>
-                        <Text
-                        fontSize="xl"
-                        >
-                            Profile
-                        </Text>
-                    </GridItem>
-                </Grid>
-
-            </Stack>   
+                  </Grid>
+                </Box>
+              ))}
+            </VStack>
           </DrawerBody>
-    </Stack>
-          
         </DrawerContent>
       </Drawer>
     </>

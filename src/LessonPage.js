@@ -113,8 +113,8 @@ function LessonPage() {
 
           <Flex direction="column" w={{ base: "90%", md: "30%" }} position="fixed" right="10" top="50">
             <Box p={5} bg="#1a202c" color="white" boxShadow="md" rounded="lg" m={5} borderWidth={2} borderColor={useColorModeValue("#4b5178", "white")}>
-              <Heading align="center" as="h3" mb={3}>Daily Quests</Heading>
-              <Text align="center" fontSize="md"> Earn XP by completing daily tasks!</Text>
+              <Heading align="center" as="h3" mb={2}>Daily Quests</Heading>
+              <Text align="center" fontSize="md"> Earn XP and ASLPoints by completing daily tasks!</Text>
               <Spacer height="10px"/>
               <Text mb={5} align="center" fontSize="md">Current XP: 30</Text>
               <Progress colorScheme="purple" value={30} />
