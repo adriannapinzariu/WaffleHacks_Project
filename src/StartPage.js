@@ -1,13 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, VStack, Heading, Text, Link as ChakraLink, Button, useColorModeValue, Flex, Spacer, Avatar, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+import { Box, VStack, Heading, Text, Link as ChakraLink, Button, useColorModeValue, Flex, Spacer, Avatar, Menu, MenuButton, MenuItem, MenuList, Center } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
 import { Html } from '@react-three/drei';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Cylinder } from '@react-three/drei';
 import { MeshBasicMaterial } from 'three';
+
 
 
 const MotionBox = motion(Box);
@@ -52,20 +53,24 @@ const buttonVariants = {
 // Navbar
 function Navbar() {
     return (
-      <Flex p="2" bg="transparent" color="white" boxShadow="md" position="sticky" top={0} zIndex={3}>
-        <Heading size="md" ml="2">ASL Journey</Heading>
-        <Spacer />
-        <Menu>
-          <MenuButton bg="#2D3748"as={Button} borderWidth={2}
-            borderColor={useColorModeValue("#4b5178", "white")} rightIcon={<ChevronDownIcon />} color="black">
-            <Avatar size="sm" />
-          </MenuButton>
-          <MenuList bg="#000000"  >
-  <MenuItem bg="#000000" color="white" _hover={{ bg: "#333333" }}>Profile</MenuItem>
-  <MenuItem bg="#000000" color="white" _hover={{ bg: "#333333" }}>Settings</MenuItem>
-  <MenuItem bg="#000000" color="white" _hover={{ bg: "#333333" }}>Logout</MenuItem>
-</MenuList>
-        </Menu>
+      <Flex h="40px" bg="#171923" color="white" boxShadow="md" position="sticky" top={0} zIndex={3}>
+        <Center px="50px" bg="black" h="100%" justifyContent='center'>
+          <Text
+          fontSize={20}
+          >ASLINGO</Text>
+        </Center>
+        <Spacer/>
+        <Center px="10px" fontSize={20}>
+          <RouterLink to="/login"
+          colorScheme="white"
+          _hover={{
+            background: "white",
+            color: "teal.500",
+          }}
+          >
+            Login
+          </RouterLink>
+        </Center>
       </Flex>
     );
   }
@@ -132,7 +137,7 @@ function StartPage() {
               >
                 Dive into the exciting world of sign language. Ready to get started?
               </Text>
-              <RouterLink to="/login">
+              <RouterLink to="/signup">
       <MotionButton
         whileHover="hover"
         whileTap="tap"
@@ -141,7 +146,7 @@ function StartPage() {
         size="lg"
         color="white"
       >
-        Let's Go!
+        Sign Up!
       </MotionButton>
   </RouterLink>
             </VStack>
