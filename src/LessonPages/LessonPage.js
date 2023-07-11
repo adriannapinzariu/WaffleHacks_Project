@@ -7,7 +7,7 @@ import { MeshBasicMaterial } from 'three';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-import DrawerExample from "./sidebar";
+import DrawerExample from "../sidebar";
 
 const components = {
   Drawer: {

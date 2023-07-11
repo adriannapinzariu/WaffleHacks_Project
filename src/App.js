@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Global, css } from "@emotion/react";
 import StartPage from './StartPage';
 import LoginPage from './LoginPage';
-import LessonPage from './LessonPage';
-import LessonOne from './Lesson1';
-import LessonTwo from './Lesson2';
-import LessonThree from './Lesson3';
-import LessonFour from './Lesson4';
+import LessonPage from './LessonPages/LessonPage';
+import LessonOne from './LessonPages/Lesson1';
+import LessonTwo from './LessonPages/Lesson2';
+import LessonThree from './LessonPages/Lesson3';
+import LessonFour from './LessonPages/Lesson4';
+import SignUp from './SignUp';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<StartPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/lesson" element={<LessonPage />} />
         <Route path="/lesson1" element={<LessonOne />}></Route>
         <Route path="/lesson2" element={<LessonTwo />}></Route>
